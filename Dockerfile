@@ -1,7 +1,7 @@
 FROM arm64v8/python:3.10
 
-COPY ./app /app
-COPY requirements.txt lms_fastapiAI/app
+COPY ./lms_fastapiAI/app /app
+COPY requirements.txt /app
 WORKDIR /app
 
 RUN pip install -r requirements.txt
