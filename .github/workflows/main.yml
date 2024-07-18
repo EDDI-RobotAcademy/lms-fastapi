@@ -49,36 +49,36 @@ jobs:
           tags: ghcr.io/silenc3502/fastapi-server:latest
           platforms: linux/arm64
           
-    deploy:
-      needs: build
-      name: Deploy
-      runs-on: [self-hosted, deploy-fastapi]
-      steps:
-        - name: Login to ghcr
-          uses: docker/login-action@v1
-          with:
-            registry: ghcr.io
-            username: ${{github.actor}}
-            password: ${{secrets.GHCR_TOKEN}}
-            
-        - name: Deploy to prod
-          uses: appleboy/ssh-action@v0.1.10
-          with:
-            host: ${{secrets.HOST_PROD}}
-            username: ec2-user
-            key: ${{secrets.PRIVATE_KEY}}
-            script_stop: true
-            script: |
-              pwd
-              ls -al
-              cd fastapi/actions-runner
-              pwd
+  deploy:
+    needs: build
+    name: Deploy
+    runs-on: [self-hosted, deploy-fastapi]
+    steps:
+      - name: Login to ghcr
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GHCR_TOKEN}}
+          
+      - name: Deploy to prod
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{secrets.HOST_PROD}}
+          username: ec2-user
+          key: ${{secrets.PRIVATE_KEY}}
+          script_stop: true
+          script: |
+            pwd
+            ls -al
+            cd fastapi/actions-runner
+            pwd
   
-              echo ${{secrets.GHCR_TOKEN}} | docker login ghcr.io -u ${{github.actor}} --password-stdin
+            echo ${{secrets.GHCR_TOKEN}} | docker login ghcr.io -u ${{github.actor}} --password-stdin
   
-              docker pull ghcr.io/${{REAL_ACTOR}}/fastapi-server:latest
+            docker pull ghcr.io/${{REAL_ACTOR}}/fastapi-server:latest
   
-              docker image prune -f
-              docker logout
+            docker image prune -f
+            docker logout
   
-              docker-compose up -d
+            docker-compose up -d
