@@ -46,7 +46,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/silenc3502/fastapi-server:latest
+          tags: ghcr.io/${{REAL_ACTOR}}/fastapi-server:latest
           platforms: linux/arm64
           
   deploy:
