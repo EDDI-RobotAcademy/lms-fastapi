@@ -183,3 +183,8 @@ pyrightconfig.json
 
 # iml
 .iml
+
+#security files
+*.key
+*.crt
+*.pem
