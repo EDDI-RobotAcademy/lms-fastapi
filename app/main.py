@@ -7,11 +7,11 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from template.task_manager.manager import TaskManager
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'template'))
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'template', 'include', 'socket_server'))
 
+from template.task_manager.manager import TaskManager
 from template.deep_learning.controller.deep_learning_controller import deepLearningRouter
 from template.dice.controller.dice_controller import diceResultRouter
 from template.include.socket_server.initializer.init_domain import DomainInitializer
