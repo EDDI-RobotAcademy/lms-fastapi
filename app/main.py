@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
+from user_defined_initializer.init import UserDefinedInitializer
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'template'))
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'template', 'include', 'socket_server'))
@@ -20,6 +21,7 @@ from template.system_initializer.init import SystemInitializer
 
 DomainInitializer.initEachDomain()
 SystemInitializer.initSystemDomain()
+UserDefinedInitializer.initUserDefinedDomain()
 
 app = FastAPI()
 
