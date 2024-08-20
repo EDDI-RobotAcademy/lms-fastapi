@@ -12,6 +12,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'template'))
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'template', 'include', 'socket_server'))
 
 from template.task_manager.manager import TaskManager
+from openai_chatbot_domain.controller.openai_chatbot_controller import openaiChatbotRouter
 from template.deep_learning.controller.deep_learning_controller import deepLearningRouter
 from template.dice.controller.dice_controller import diceResultRouter
 from template.include.socket_server.initializer.init_domain import DomainInitializer
@@ -31,6 +32,7 @@ app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True
 
 app.include_router(deepLearningRouter)
 app.include_router(diceResultRouter)
+app.include_router(openaiChatbotRouter)
 
 if __name__ == "__main__":
     colorama.init()  # terminal상에서 가독성을 얻기 위한 출력 색상 라이브러리
