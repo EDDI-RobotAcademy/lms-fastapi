@@ -9,5 +9,5 @@ class OpenaiChatbotServiceImpl(OpenaiChatbotService):
         self.__systemQueueRepository = systemQueueRepository
 
     def requestRecipeToOpenai(self, toOpenaiRequest):
-        systemFastAPITransmitterChannel = self.__systemQueueRepository.getSystemFastAPISocketTransmitterChannel()
+        systemFastAPITransmitterChannel = self.__systemQueueRepository.getUserDefinedFastAPISocketTransmitterChannel()
         self.__openaiChatbotRepository.requestToSocketServer(toOpenaiRequest, systemFastAPITransmitterChannel)
