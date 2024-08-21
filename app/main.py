@@ -20,8 +20,8 @@ from template.include.socket_server.initializer.init_domain import DomainInitial
 from template.system_initializer.init import SystemInitializer
 
 DomainInitializer.initEachDomain()
-SystemInitializer.initSystemDomain()
 UserDefinedInitializer.initUserDefinedDomain()
+SystemInitializer.initSystemDomain()
 
 app = FastAPI()
 
