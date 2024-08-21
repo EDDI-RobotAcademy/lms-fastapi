@@ -4,7 +4,6 @@ from template.system_queue.repository.system_queue_repository_impl import System
 
 
 class OpenaiChatbotServiceImpl(OpenaiChatbotService):
-
     def __init__(self, systemQueueRepository: SystemQueueRepositoryImpl):
         self.__openaiChatbotRepository = OpenaiChatbotRepositoryImpl()
         self.__systemQueueRepository = systemQueueRepository
