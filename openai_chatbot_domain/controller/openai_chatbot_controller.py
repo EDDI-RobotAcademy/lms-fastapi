@@ -3,13 +3,13 @@ from starlette.responses import JSONResponse
 
 from openai_chatbot_domain.controller.request_form.openai_chatbot_request_form import OpenaiChatbotRequestForm
 from openai_chatbot_domain.service.openai_chatbot_service_impl import OpenaiChatbotServiceImpl
-from template.system_queue.repository.system_queue_repository_impl import SystemQueueRepositoryImpl
+from user_defined_queue.repository.user_defined_queue_repository_impl import UserDefinedQueueRepositoryImpl
 
 openaiChatbotRouter = APIRouter()
 
 
 async def injectOpenaiChatbotService() -> OpenaiChatbotServiceImpl:
-    return OpenaiChatbotServiceImpl(SystemQueueRepositoryImpl.getInstance())
+    return OpenaiChatbotServiceImpl(UserDefinedQueueRepositoryImpl.getInstance())
 
 
 @openaiChatbotRouter.post("/request-recipe-information-to-openai")
