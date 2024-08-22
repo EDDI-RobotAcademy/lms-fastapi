@@ -11,4 +11,4 @@ class OpenaiChatbotDomainRequestForm(BaseModel):
     userSendMessage: List[str]
 
     def toOpenaiChatbotRequest(self) -> OpenaiChatbotDomainRequest:
-        return OpenaiChatbotDomainRequest(command=self.command, data=self.data)
+        return OpenaiChatbotDomainRequest(command=self.command, data=self.userSendMessage)
