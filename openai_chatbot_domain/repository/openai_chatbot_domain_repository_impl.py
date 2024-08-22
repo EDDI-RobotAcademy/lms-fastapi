@@ -9,7 +9,7 @@ class OpenaiChatbotDomainRepositoryImpl(OpenaiChatbotDomainRepository):
         print(f"OpenaiChatbotDomainRepositoryImpl getGeneratedRecipe()")
 
         try:
-            receivedResponseFromSocketClient = userDefinedReceiverFastAPIChannel.get(False)
+            receivedResponseFromSocketClient = userDefinedReceiverFastAPIChannel.put()
             return json.loads(receivedResponseFromSocketClient)
 
         except queue.Empty:
