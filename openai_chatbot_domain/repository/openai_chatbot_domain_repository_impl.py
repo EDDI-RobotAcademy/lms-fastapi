@@ -9,7 +9,9 @@ class OpenaiChatbotDomainRepositoryImpl(OpenaiChatbotDomainRepository):
         print(f"OpenaiChatbotDomainRepositoryImpl getGeneratedRecipe()")
 
         try:
+            print("요청 전송")
             receivedResponseFromSocketClient = userDefinedReceiverFastAPIChannel.put()
+            print("요청에 대한 응답 수신")
             return json.loads(receivedResponseFromSocketClient)
 
         except queue.Empty:
