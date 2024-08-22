@@ -10,9 +10,9 @@ class OpenaiChatbotDomainRepositoryImpl(OpenaiChatbotDomainRepository):
 
         try:
             print("요청 전송")
-            receivedResponseFromSocketClient = userDefinedReceiverFastAPIChannel.put()
+            receivedResponseFromSocketClient = userDefinedReceiverFastAPIChannel.get(False)
             print("요청에 대한 응답 수신")
             return json.loads(receivedResponseFromSocketClient)
 
         except queue.Empty:
-            return "데이터 없음 저리 가"
+            return "큐 비었잖아 뭐함?"
