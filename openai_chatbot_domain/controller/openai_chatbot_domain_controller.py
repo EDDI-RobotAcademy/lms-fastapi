@@ -11,7 +11,7 @@ openaiChatbotDomainRouter = APIRouter()
 async def injectOpenaiChatbotDomainService() -> OpenaiChatbotDomainServiceImpl:
     return OpenaiChatbotDomainServiceImpl(UserDefinedQueueRepositoryImpl.getInstance())
 
-@openaiChatbotDomainRouter.post("/request_form-generate-recipe-to-openai")
+@openaiChatbotDomainRouter.post("/request-generate-recipe-to-openai")
 async def requestToOpenaiChatbotGenerateRecipe(openaiChatbotDomainService: OpenaiChatbotDomainServiceImpl =
                                                 Depends(injectOpenaiChatbotDomainService)):
 
