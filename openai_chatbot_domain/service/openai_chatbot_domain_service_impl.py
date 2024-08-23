@@ -13,5 +13,5 @@ class OpenaiChatbotDomainServiceImpl(OpenaiChatbotDomainService):
         userDefinedReceiverFastAPIChannel = self.__userDefinedQueueRepository.getUserDefinedSocketReceiverFastAPIChannel()
 
         ColorPrinter.print_important_data("userDefinedReceiverFastAPIChannel", userDefinedReceiverFastAPIChannel)
-
+        
         return self.__openaiChatbotDomainRepository.getGeneratedRecipe(userDefinedReceiverFastAPIChannel)

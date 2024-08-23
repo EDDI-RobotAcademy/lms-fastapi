@@ -10,7 +10,7 @@ class OpenaiChatbotDomainRepositoryImpl(OpenaiChatbotDomainRepository):
 
         try:
             receivedResponseFromSocketClient = userDefinedReceiverFastAPIChannel.get(False)
-            print("요청에 대한 응답 수신됨")
+            print("요청에 대한 응답 수신")
             return json.loads(receivedResponseFromSocketClient)
 
         except queue.Empty:
