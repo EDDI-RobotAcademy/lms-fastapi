@@ -15,3 +15,15 @@ class OpenaiChatbotDomainRepositoryImpl(OpenaiChatbotDomainRepository):
 
         except queue.Empty:
             return "큐 비었잖아 뭐함?"
+
+    def getGeneratedVoice(self, userDefinedReceiverFastAPIChannel):
+        print(f"OpenaiChatbotDomainRepositoryImpl getGeneratedVoice()")
+
+        try:
+            receivedResponseFromSocketClient = userDefinedReceiverFastAPIChannel.get(False)
+            print("요청에 대한 응답 수신")
+            return json.loads(receivedResponseFromSocketClient)
+
+        except queue.Empty:
+            return "큐 비었잖아 뭐함?"
+

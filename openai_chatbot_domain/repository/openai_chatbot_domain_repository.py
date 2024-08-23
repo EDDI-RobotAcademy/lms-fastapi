@@ -5,3 +5,7 @@ class OpenaiChatbotDomainRepository(ABC):
     @abstractmethod
     def getGeneratedRecipe(self, userDefinedReceiverFastAPIChannel):
         pass
+
+    @abstractmethod
+    def getGeneratedVoice(self, userDefinedReceiverFastAPIChannel):
+        pass

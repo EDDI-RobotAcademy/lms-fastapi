@@ -19,3 +19,15 @@ async def requestToOpenaiChatbotGenerateRecipe(openaiChatbotDomainService: Opena
     ColorPrinter.print_important_data("openaiChatbotGeneratedRecipe", openaiChatbotGeneratedRecipe)
 
     return JSONResponse(content=openaiChatbotGeneratedRecipe, status_code=status.HTTP_200_OK)
+
+
+@openaiChatbotDomainRouter.post("/lets-speak")
+async def speechWithOpenAI(
+                           openaiChatbotDomainService: OpenaiChatbotDomainServiceImpl =
+                           Depends(injectOpenaiChatbotDomainService)):
+
+
+    audio_data = openaiChatbotDomainService.getGeneratedVoice()
+    ColorPrinter.print_important_data("audio_data", audio_data)
+
+    return JSONResponse(content={"audio_data": audio_data},  media_type="audio/mpeg", status_code=status.HTTP_200_OK)
