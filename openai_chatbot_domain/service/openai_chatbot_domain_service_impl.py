@@ -9,11 +9,7 @@ class OpenaiChatbotDomainServiceImpl(OpenaiChatbotDomainService):
         self.__openaiChatbotDomainRepository = OpenaiChatbotDomainRepositoryImpl()
         self.__userDefinedQueueRepository = userDefinedQueueRepository
 
-    def getGeneratedRecipe(self, generateRequest):
+    def getGeneratedRecipe(self):
         userDefinedReceiverFastAPIChannel = self.__userDefinedQueueRepository.getUserDefinedSocketReceiverFastAPIChannel()
-        userFastAPITransmitterChannel = self.__userDefinedQueueRepository.getUserDefinedFastAPISocketTransmitterChannel()
-
         ColorPrinter.print_important_data("userDefinedReceiverFastAPIChannel", userDefinedReceiverFastAPIChannel)
-
-        return self.__openaiChatbotDomainRepository.getGeneratedRecipe(generateRequest, userFastAPITransmitterChannel,
-                                                                       userDefinedReceiverFastAPIChannel)
+        return self.__openaiChatbotDomainRepository.getGeneratedRecipe(userDefinedReceiverFastAPIChannel)

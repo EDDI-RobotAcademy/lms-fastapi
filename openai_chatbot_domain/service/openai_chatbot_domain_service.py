@@ -2,5 +2,5 @@ from abc import ABC
 
 
 class OpenaiChatbotDomainService(ABC):
-    def getGeneratedRecipe(self, generateRequest):
+    def getGeneratedRecipe(self):
         pass
