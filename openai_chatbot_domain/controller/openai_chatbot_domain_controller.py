@@ -14,10 +14,10 @@ async def injectOpenaiChatbotDomainService() -> OpenaiChatbotDomainServiceImpl:
 
 
 @openaiChatbotDomainRouter.post("/request_form-generate-recipe-to-openai")
-async def requestToOpenaiChatbotGenerateRecipe(openaiChatbotDomainRequestForm: OpenaiChatbotDomainRequestForm,
-                                               openaiChatbotDomainService: OpenaiChatbotDomainServiceImpl = Depends(
-                                                   injectOpenaiChatbotDomainService)):
-    openaiChatbotGeneratedRecipe = openaiChatbotDomainService.getGeneratedRecipe(openaiChatbotDomainRequestForm.toOpenaiChatbotRequest())
+async def requestToOpenaiChatbotGenerateRecipe(openaiChatbotDomainService: OpenaiChatbotDomainServiceImpl =
+                                                Depends(injectOpenaiChatbotDomainService)):
+
+    openaiChatbotGeneratedRecipe = openaiChatbotDomainService.getGeneratedRecipe()
     ColorPrinter.print_important_data("openaiChatbotGeneratedRecipe", openaiChatbotGeneratedRecipe)
 
     return JSONResponse(content=openaiChatbotGeneratedRecipe, status_code=status.HTTP_200_OK)
