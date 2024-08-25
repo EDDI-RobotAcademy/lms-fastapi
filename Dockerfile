@@ -1,16 +1,13 @@
 FROM arm64v8/python:3.10
-# FROM linux/amd64/v3/python:3.10
-
-
-COPY ./app /app
-COPY requirements.txt /app
 
 WORKDIR /app
+
+COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
-EXPOSE 33333
 
+EXPOSE 33333 37373
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "33333"]
+CMD ["sh", "-c", "python3 -m app.main"]

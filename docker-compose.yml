@@ -5,6 +5,14 @@ services:
     container_name: docker-fastapi-deploy-server
     ports:
       - 33333:33333
+      - 37373:37373
+    environment:
+      - HOST=${HOST}
+      - PORT=${PORT}
+      - FASTAPI_PORT=${FASTAPI_PORT}
+      - SERVER_CERTIFICATE=${SERVER_CERTIFICATE}
+      - CLIENT_CA_CERTIFICATE=${CLIENT_CA_CERTIFICATE}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
     networks:
       - app
 
