@@ -30,4 +30,4 @@ async def speechWithOpenAI(
     audio_data = openaiChatbotDomainService.getGeneratedVoice()
     ColorPrinter.print_important_data("audio_data", audio_data)
 
-    return JSONResponse(content={"audio_data": audio_data},  media_type="audio/mpeg", status_code=status.HTTP_200_OK)
+    return JSONResponse(content=audio_data,  media_type="audio/mpeg", status_code=status.HTTP_200_OK)
