@@ -13,7 +13,7 @@ async def injectOpenaiChatbotDomainService() -> OpenaiChatbotDomainServiceImpl:
 
 @openaiChatbotDomainRouter.post("/request-generate-recipe-to-openai")
 async def requestToOpenaiChatbotGenerateRecipe(openaiChatbotDomainService: OpenaiChatbotDomainServiceImpl =
-                                                Depends(injectOpenaiChatbotDomainService)):
+                                               Depends(injectOpenaiChatbotDomainService)):
 
     openaiChatbotGeneratedRecipe = openaiChatbotDomainService.getGeneratedRecipe()
     ColorPrinter.print_important_data("openaiChatbotGeneratedRecipe", openaiChatbotGeneratedRecipe)
