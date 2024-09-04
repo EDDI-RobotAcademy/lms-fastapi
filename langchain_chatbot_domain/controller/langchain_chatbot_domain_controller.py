@@ -12,14 +12,14 @@ async def injectLangchainChatbotDomainService() -> LangchainChatbotDomainService
 async def requestToLangchainGenerateRecipe(langchainChatbotDomainService: LangchainChatbotDomainServiceImpl =
                                            Depends(injectLangchainChatbotDomainService)):
 
-    await langchainChatbotDomainService.getFaissIndex()
+    langchainChatbotDomainService.getFaissIndex()
     return JSONResponse(content='생성이 완료되었습니다.', status_code=status.HTTP_200_OK)
 
 @langchainChatbotDomainRouter.post("/generate-recipe-with-rag")
 async def requestToLangchainGenerateRecipe(langchainChatbotDomainService: LangchainChatbotDomainServiceImpl =
                                            Depends(injectLangchainChatbotDomainService)):
 
-    langchainChatbotGeneratedRecipe = await langchainChatbotDomainService.getGeneratedRecipe()
+    langchainChatbotGeneratedRecipe = langchainChatbotDomainService.getGeneratedRecipe()
     ColorPrinter.print_important_data("langchainChatbotGeneratedRecipe", langchainChatbotGeneratedRecipe)
 
     return JSONResponse(content=langchainChatbotGeneratedRecipe, status_code=status.HTTP_200_OK)
