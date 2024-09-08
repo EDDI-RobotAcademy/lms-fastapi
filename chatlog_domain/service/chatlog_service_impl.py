@@ -7,17 +7,17 @@ class ChatlogServiceImpl:
         self.__chatlog_repository = ChatlogRepositoryImpl()
         self.__userDefinedQueueRepository = userDefinedQueueRepository
 
-    def save_log(self, account_id: str, recipe: str, recipe_hash: str):
+    def save_log(self):
         userDefinedReceiverFastAPIChannel = self.__userDefinedQueueRepository.getUserDefinedSocketReceiverFastAPIChannel()
         ColorPrinter.print_important_data("userDefinedReceiverFastAPIChannel", userDefinedReceiverFastAPIChannel)
-        self.__chatlog_repository.save_log(userDefinedReceiverFastAPIChannel, account_id, recipe, recipe_hash)
+        self.__chatlog_repository.save_log(userDefinedReceiverFastAPIChannel)
 
-    def get_log(self, account_id: str, recipe_hash: str):
+    def get_log(self):
         userDefinedReceiverFastAPIChannel = self.__userDefinedQueueRepository.getUserDefinedSocketReceiverFastAPIChannel()
         ColorPrinter.print_important_data("userDefinedReceiverFastAPIChannel", userDefinedReceiverFastAPIChannel)
-        return self.__chatlog_repository.get_log(userDefinedReceiverFastAPIChannel, account_id, recipe_hash)
+        return self.__chatlog_repository.get_log(userDefinedReceiverFastAPIChannel)
 
-    def delete_log(self, account_id: str, recipe_hash: str):
+    def delete_log(self):
         userDefinedReceiverFastAPIChannel = self.__userDefinedQueueRepository.getUserDefinedSocketReceiverFastAPIChannel()
         ColorPrinter.print_important_data("userDefinedReceiverFastAPIChannel", userDefinedReceiverFastAPIChannel)
-        return self.__chatlog_repository.delete_log(userDefinedReceiverFastAPIChannel, account_id, recipe_hash)
+        return self.__chatlog_repository.delete_log(userDefinedReceiverFastAPIChannel)
