@@ -18,8 +18,8 @@ async def inject_chatlog_service() -> ChatlogServiceImpl:
 async def save_log(
         chatlog_service: ChatlogServiceImpl = Depends(inject_chatlog_service)
 ):
-    chatlog_service.save_log()
-    return JSONResponse(content="Log saved successfully", status_code=status.HTTP_200_OK)
+    response = chatlog_service.save_log()
+    return JSONResponse(content=response, status_code=status.HTTP_200_OK)
 
 
 @chatlogRouter.get("/get-log")

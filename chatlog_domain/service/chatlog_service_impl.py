@@ -10,7 +10,7 @@ class ChatlogServiceImpl:
     def save_log(self):
         userDefinedReceiverFastAPIChannel = self.__userDefinedQueueRepository.getUserDefinedSocketReceiverFastAPIChannel()
         ColorPrinter.print_important_data("userDefinedReceiverFastAPIChannel", userDefinedReceiverFastAPIChannel)
-        self.__chatlog_repository.save_log(userDefinedReceiverFastAPIChannel)
+        return self.__chatlog_repository.save_log(userDefinedReceiverFastAPIChannel)
 
     def get_log(self):
         userDefinedReceiverFastAPIChannel = self.__userDefinedQueueRepository.getUserDefinedSocketReceiverFastAPIChannel()
