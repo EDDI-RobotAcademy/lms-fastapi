@@ -2,13 +2,13 @@ from abc import ABC, abstractmethod
 
 class ChatlogService(ABC):
     @abstractmethod
-    def save_log(self, account_id: str, recipe: str, recipe_hash: str):
+    def save_log(self):
         pass
 
     @abstractmethod
-    def get_log(self, account_id: str, recipe_hash: str):
+    def get_log(self):
         pass
 
     @abstractmethod
-    def delete_log(self, account_id: str, recipe_hash: str):
+    def delete_log(self):
         pass
