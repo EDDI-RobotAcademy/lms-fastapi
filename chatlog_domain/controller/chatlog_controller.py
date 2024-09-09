@@ -32,5 +32,7 @@ async def get_log(chatlog_service: ChatlogServiceImpl = Depends(inject_chatlog_s
 
 @chatlogRouter.post("/delete-log")
 async def delete_log(chatlog_service: ChatlogServiceImpl = Depends(inject_chatlog_service)):
-    chatlog_service.delete_log()
+    log = chatlog_service.delete_log()
+    if log['deleted_log'] is "0":
+        return JSONResponse(content="Log not found", status_code=status.HTTP_404_NOT_FOUND)
     return JSONResponse(content="Log deleted successfully", status_code=status.HTTP_200_OK)
