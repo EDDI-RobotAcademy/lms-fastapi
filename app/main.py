@@ -9,6 +9,7 @@ import uvicorn
 from dotenv import load_dotenv
 from fastapi import FastAPI
 
+from chatlog_domain.controller.chatlog_controller import chatlogRouter
 from langchain_chatbot_domain.controller.langchain_chatbot_domain_controller import langchainChatbotDomainRouter
 from openai_chatbot_domain.controller.openai_chatbot_domain_controller import openaiChatbotDomainRouter
 from print_hello.controller.print_hello_controller import printHelloRouter
@@ -46,6 +47,7 @@ app.include_router(diceResultRouter)
 app.include_router(openaiChatbotDomainRouter)
 app.include_router(printHelloRouter)
 app.include_router(langchainChatbotDomainRouter)
+app.include_router(chatlogRouter)
 
 if __name__ == "__main__":
     colorama.init(autoreset=True)
