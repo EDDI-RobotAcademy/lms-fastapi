@@ -22,7 +22,7 @@ async def save_log(
     return JSONResponse(content=response, status_code=status.HTTP_200_OK)
 
 
-@chatlogRouter.get("/get-log")
+@chatlogRouter.post("/get-log")
 async def get_log(chatlog_service: ChatlogServiceImpl = Depends(inject_chatlog_service)):
     log_data = chatlog_service.get_log()
     if log_data is None:
@@ -30,7 +30,7 @@ async def get_log(chatlog_service: ChatlogServiceImpl = Depends(inject_chatlog_s
     return JSONResponse(content=log_data, status_code=status.HTTP_200_OK)
 
 
-@chatlogRouter.delete("/delete-log")
+@chatlogRouter.post("/delete-log")
 async def delete_log(chatlog_service: ChatlogServiceImpl = Depends(inject_chatlog_service)):
     chatlog_service.delete_log()
     return JSONResponse(content="Log deleted successfully", status_code=status.HTTP_200_OK)
